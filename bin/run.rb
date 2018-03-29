@@ -3,6 +3,7 @@ require "pry"
 
 def greeting
 	puts "Hello! Welcome to Flatiron BnB!"
+	puts "Enter 1 to search"
 end
 
 def query 
@@ -10,15 +11,48 @@ def query
 	loc = gets.chomp
 	if loc == "DC" || loc == "dc"
 		dc = Listing.all.map do |listing|
-			binding.pry
-			listing.city == "Washington"
+			if listing.city == "Washington"
+				listing
+			end
 		end
-		puts dc
+		dc = dc.compact
+		puts "DC: Listings #{dc.size}"
+		dc.each do |listing|
+			puts "Name:#{listing.name}"
+			puts "ID: #{listing.id}" 
+			puts "Latitude:#{listing.lat}"
+			puts "Longitude:#{listing.lng}"
+			puts "City:#{listing.city}"
+			puts "Neighborhood:#{listing.neighborhood}"
+			puts "Rate: #{listing.rate}"
+			puts "Room Type: #{listing.room_type}"
+			puts "Bedrooms: #{listing.bedrooms}"
+			puts "Beds:#{listing.beds}"
+			puts "Bathrooms: #{listing.bathrooms}"
+			puts "---------------------------------"
+		end
 	elsif loc == "LA" || loc == "la"
 		la = Listing.all.map do |listing|
-			listing.city == "Los Angeles, CA"
+			if listing.city == "Los Angeles"
+				listing
+			end
 		end
-		puts la
+		la = la.compact
+		puts "LA: Listings #{la.size}"
+		la.each do |listing|
+			puts "Name:#{listing.name}"
+			puts "ID: #{listing.id}" 
+			puts "Latitude:#{listing.lat}"
+			puts "Longitude:#{listing.lng}"
+			puts "City:#{listing.city}"
+			puts "Neighborhood:#{listing.neighborhood}"
+			puts "Rate: #{listing.rate}"
+			puts "Room Type: #{listing.room_type}"
+			puts "Bedrooms: #{listing.bedrooms}"
+			puts "Beds:#{listing.beds}"
+			puts "Bathrooms: #{listing.bathrooms}"
+			puts "---------------------------------"
+		end
 	elsif loc == "NYC" || loc == "nyc"
 		nyc = Listing.all.map do |listing|
 			if listing.city == "New York"
@@ -47,4 +81,10 @@ def query
 end
 
 greeting
-query
+input = gets.chomp 
+if input == "1"
+	query
+else
+	greeting
+end
+
