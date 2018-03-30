@@ -1,7 +1,8 @@
 class Console
 
+	attr_accessor :current_user
 	def execute
-		
+
 		#1) Can create user objects, access them from console
 		current_user = self.user
 		#Can create queries
@@ -14,7 +15,7 @@ class Console
 	def repl(user_obj)
 		self.repl_greeting
 
-		while input = Readline.readline("> ", true)
+		while input = Readline.readline("console> ", true)
 
 			break if input == "exit"
 			case input 
@@ -23,8 +24,7 @@ class Console
 				le_query.execute
 
 			when 'reservations', 'reservation', 'Reservations'
-				Reservation.reservation_header
-				Reservation.reservations_by_user(user_obj)
+				Reservation.execute(user_obj)
 			else
 				puts "Invalid input, please enter 'query', 'reservations', or 'exit\n\n"
 			end
@@ -72,7 +72,7 @@ class Console
 	#                                                                        #
 	#    Welcome to the terminal! From here you can do the following:        #
 	#       1) Type 'query' to make a query/reservation.                     #
-	#       2) Type 'reservations' to see your reservations                  #
+	#       2) Type 'reservations' to interact with your reservations        #
 	#       3) Type 'exit' to exit the program                               #
 	#                                                                        #
 	#                                                                        #

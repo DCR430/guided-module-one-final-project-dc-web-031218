@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
 	def make_reservation(listing_obj)
 		Reservation.create(user: self, listing: listing_obj)
 	end
+
 end
