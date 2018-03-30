@@ -1,9 +1,9 @@
 class Console
 
 	def execute
+		
 		#1) Can create user objects, access them from console
 		current_user = self.user
-
 		#Can create queries
 
 		#3) Can create reservations
@@ -19,18 +19,19 @@ class Console
 			break if input == "exit"
 			case input 
 			when 'query', 'Query' 
-				puts "Query!\n\n"
 				le_query = Query.new(user_obj)
 				le_query.execute
 
 			when 'reservations', 'reservation', 'Reservations'
-				puts "Reservations!\n\n"
+				Reservation.reservation_header
+				Reservation.reservations_by_user(user_obj)
 			else
 				puts "Invalid input, please enter 'query', 'reservations', or 'exit\n\n"
 			end
 
 		end
 	end
+
 
 	def user
 		self.user_greeting
