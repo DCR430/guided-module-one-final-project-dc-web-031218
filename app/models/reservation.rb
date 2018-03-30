@@ -74,16 +74,14 @@ class Reservation < ActiveRecord::Base
 
 
 	def self.reservations_by_user(user_obj)
-		coll = user_obj.reservations
-
-		if coll.empty?
+		user_obj.reload
+		if user_obj.reservations.empty?
 			puts "You have no reservations!"
 			return
 		end
 
 		i = 0
-
-		coll.each do |obj|
+		user_obj.reservations.each do |obj|
 			puts "#{i}) ----------------------------------------------------------"
 			puts "Check in: #{obj.start_date} Check out: #{obj.end_date}"
 			puts "name: #{obj.listing.name}, city: #{obj.listing.city}"
@@ -92,7 +90,7 @@ class Reservation < ActiveRecord::Base
 			i+= 1 
 		end 
 
-		coll
+		user_obj.reservations
 	end
 
 

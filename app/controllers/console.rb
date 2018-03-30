@@ -25,6 +25,8 @@ class Console
 
 			when 'reservations', 'reservation', 'Reservations'
 				Reservation.execute(user_obj)
+			when 'options'
+				self.repl_greeting
 			else
 				puts "Invalid input, please enter 'query', 'reservations', or 'exit\n\n"
 			end
@@ -74,7 +76,7 @@ class Console
 	#       1) Type 'query' to make a query/reservation.                     #
 	#       2) Type 'reservations' to interact with your reservations        #
 	#       3) Type 'exit' to exit the program                               #
-	#                                                                        #
+	#       4) Type 'options' to see options again                           #
 	#                                                                        #
 	##########################################################################
 		HEREDOC
