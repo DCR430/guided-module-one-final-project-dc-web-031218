@@ -21,3 +21,4 @@ User Stories:
 2) Run the program by running 'ruby bin/run.rb' in CLI. 
 3) Follow instructions, see listings, and make reservations. 
 
+### Creative Commons Attibution 4.0 License (https://creativecommons.org/licenses/by/4.0/) 
