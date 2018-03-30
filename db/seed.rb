@@ -77,6 +77,6 @@ def seed_LANYC(filepath)
 end
 
 
-# seed_DC(dcpath)
+seed_DC(dcpath)
 seed_LANYC(lapath)
 seed_LANYC(nycpath)
